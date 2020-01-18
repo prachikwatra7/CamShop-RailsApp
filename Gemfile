@@ -65,6 +65,6 @@ end
     
 group :production do
   # Use postgresql as the database for Active Record
-  gem 'pg'
+  gem 'pg', '~> 0.11'
   gem 'rails_12factor' # DELETE THIS LINE IF USING RAILS 5 OR ABOVE
 end
