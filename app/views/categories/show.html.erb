@@ -1,0 +1,86 @@
+
+<h1 align="center">Welcome!!!</h1>
+
+  <div class="w3-container w3-padding-32 w3-theme-l5 w3-center" id="contact">
+    <div class="w3-row">
+      <h3 align="center"><span class="w3-xlarge w3-border-teal w3-bottombar">Company name: <%= @category.name %></span></h3>
+      <p><i class="fa fa-stop-circle-o w3-text-teal w3-xlarge"></i> Feature: <%= @category.feature %></p>
+      <p><i class="fa fa-stop-circle-o w3-text-teal w3-xlarge"></i> Model: <%= @category.model %></p>
+   <% @category.save %>
+      
+     </div> 
+  </div>
+  
+  
+      <div class="w3-padding-16"><h3 align="center"><span class="w3-xlarge w3-border-teal w3-bottombar">Our Products...!!!</span></h3></i></div>
+        <% @category.products.each do |product| %>
+          <div class="w3-container w3-padding-32 w3-theme-l5 w3-center" id="contact">
+            <div class="w3-row">
+              <h3 align="center"><span class="w3-xlarge w3-border-teal w3-bottombar">Product: <%= product.name %></span></h3>
+              <p><i class="fa fa-stop-circle-o w3-text-teal w3-xlarge"></i> Description: <%= product.description %></p>
+              <p><i class="fa fa-stop-circle-o w3-text-teal w3-xlarge"></i> Price: <%= product.price %></p>
+              <p><i class="fa fa-stop-circle-o w3-text-teal w3-xlarge"></i> Making Year: <%= product.make %></p>
+               <p>
+                 <% if current_user.admin? %>
+                  <spam><%= link_to 'Destroy Product', [product.category, product],
+                   method: :delete, class: "w3-button w3-center w3-theme w3-hover-teal w3-medium w3-theme btn w3-bar-item w3-text-white",
+                   data: { confirm: 'Are you sure?' } %> </spam>
+                  <% end %>
+                   <spam><%= link_to 'Buy Now', cart_path, class: "w3-button w3-center w3-theme w3-hover-teal w3-medium w3-theme btn w3-bar-item w3-text-white",
+                   data: { confirm: 'Are you sure?' } %> </spam>
+                  
+               </p>
+              
+
+             </div> 
+          </div>
+        <% end %>
+      </div>  
+      <div class="w3-container w3-padding-32 w3-theme-l5" id="contact">
+        <div class="w3-row">
+          <div class="w3-col m5">
+            <div class="w3-padding-16"><h3><span class="w3-xlarge w3-border-teal w3-bottombar">Add a product:</span></h3></i></div>
+          </div>
+        </div>
+          <%= form_tag(model: [ @category, @category.products.build ], local: true) do %>
+            <div class="w3-container w3-card-4 w3-padding-16 w3-white form">
+                <div class="w3-secton">      
+                  <%= label_tag :name %>
+                  <spam class="w3-input"><%= text_field_tag :name%></spam>
+                </div>
+               
+                <div class="w3-secton">      
+                  <%= label_tag :description %>
+                  <spam class="w3-input"><%= text_area_tag :description %></spam>
+                  
+                </div>
+                <div class="w3-secton">      
+                  <%= label_tag :price %>
+                  <spam class="w3-input"><%= text_field_tag :price %></spam>
+                </div>
+                <div class="w3-secton">      
+                  <%= label_tag :make %>
+                  <spam class="w3-input"><%= text_field_tag :make %></spam>
+                </div>
+                <spam class="w3-button w3-right w3-theme w3-hover-teal"><%= submit_tag %></spam>
+            </div>
+          <% end %>
+        </div>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="w3-large w3-border-teal "><%= link_to "Back to categories listing", categories_path %> | </td>
+        <% if logged_in? && current_user.admin? %>
+        <td class="w3-large w3-border-teal "><%= link_to "Edit this category", edit_category_path(@category) %> | </td>
+        <td class="w3-large w3-border-teal "><%= link_to 'Destroy',category_path(@category), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+   </tbody>
+</table>
+<br>

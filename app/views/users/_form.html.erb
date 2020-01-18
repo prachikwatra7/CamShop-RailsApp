@@ -1,0 +1,43 @@
+
+<% if @user.errors.any? %>
+   <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h2 class="panel-title">
+            <%= pluralize(@user.errors.count, "error") %>
+            prohibited this category from being saved:
+          </h2>
+          <div class="panel-body">
+            <ul>
+              <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+              <% end %>
+            </ul> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+  <%= form_for @user do |f| %>
+  <div class="w3-container w3-card-4 w3-padding-16 w3-white form">
+      <div class="w3-secton">      
+        <%= f.label :username %>
+        <%= f.text_field :username, class: "w3-input" %>
+      </div>
+     
+      <div class="w3-secton">      
+        <%= f.label :email %>
+        <%= f.email_field :email, class: "w3-input" %>
+      </div>
+      <div class="w3-secton">      
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "w3-input" %>
+      </div>
+      <%= f.submit(@user.new_record? ? "Sign Up" : "Update Account", class: 'w3-button w3-right w3-theme w3-hover-teal') %>
+      
+  </div>
+<% end %>
+

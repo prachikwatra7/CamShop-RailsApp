@@ -1,0 +1,31 @@
+.image {
+    width: 100%;
+    min-height:350px;
+    max-height:600px;
+}
+
+.btn {
+    display: block;
+}
+
+.icon {
+    padding: 0px 16px 5px 16px;
+    
+}
+
+.form {
+    width: 600px;
+    margin: 50px 50px;
+}
+
+.image1 {
+    width: 450px;
+    height: 250px;
+}
+
+.footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}

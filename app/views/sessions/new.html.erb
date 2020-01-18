@@ -1,0 +1,24 @@
+
+<div class="w3-container w3-padding-32 w3-theme-l5" id="contact">
+  <div class="w3-row">
+    <div class="w3-col m5">
+      <div class="w3-padding-16"><h3><span class="w3-xlarge w3-border-teal w3-bottombar">Log In</span></h3></i></div>
+          <%= form_for(:session, url: login_path) do |f| %>
+              <div class="w3-container w3-card-4 w3-padding-16 w3-white form">
+                 
+                  <div class="w3-secton">      
+                    <%= f.label :email %>
+                    <%= f.email_field :email, class: "w3-input" %>
+                  </div>
+                  <div class="w3-secton">      
+                    <%= f.label :password %>
+                    <%= f.password_field :password, class: "w3-input" %>
+                  </div>
+                  <%= f.submit "Log-in", class: 'w3-button w3-right w3-theme w3-hover-teal' %>
+                  
+              </div>
+        <% end %>
+      </div>
+  </div>
+</div>
+

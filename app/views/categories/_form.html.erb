@@ -1,0 +1,48 @@
+
+<% if @category.errors.any? %>
+   <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h2 class="panel-title">
+            <%= pluralize(@category.errors.count, "error") %>
+            prohibited this category from being saved:
+          </h2>
+          <div class="panel-body">
+            <ul>
+              <% @category.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+              <% end %>
+            </ul> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+  <%= form_for @category do |f| %>
+  <div class="w3-container w3-card-4 w3-padding-16 w3-white form">
+      <div class="w3-secton">      
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "w3-input" %>
+      </div>
+     
+      <div class="w3-secton">      
+        <%= f.label :feature %>
+        <%= f.text_area :feature, class: "w3-input" %>
+      </div>
+      <div class="w3-secton">      
+        <%= f.label :model %>
+        <%= f.text_field :model, class: "w3-input" %>
+      </div>
+      <div class="w3-secton">      
+        <%= f.label :avatar %>
+        <%= f.file_field :avatar, class: "w3-input" %>
+      </div>
+      <%= f.submit class: 'w3-button w3-right w3-theme w3-hover-teal' %>
+      
+  </div>
+<% end %>
+
+<h3 class="w3-large w3-border-teal"><%= link_to "Back to categories listing", categories_path %></h3>
