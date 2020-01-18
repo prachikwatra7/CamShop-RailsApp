@@ -1,4 +1,4 @@
-FLASH-SALES Project
+CamShop Project
 •	Github link: https://github.com/prachikwatra7/CamShop-RailsApp
 •	App name: CamShop App
 •	My home page has functionality to login and signup in the dropdown: get started and ShOp MoRe SaVe MoRe button will take us to the categories page, where we can view all existing categories and explore the products of each category by clicking on explore button.
